@@ -1,0 +1,44 @@
+$userBlockWidth: 325px;
+$selectedColor: green;
+$borderSize: 5px;
+
+@mixin byBorder($width, $color)
+{
+  border: $width solid $color;
+  border-radius: 10px;
+}
+
+.userBlock
+{
+  @include byBorder(2px, gray);
+
+  width: $userBlockWidth;
+  height: $userBlockWidth*0.25+2*$borderSize;
+  margin-bottom: 10px;
+
+  img
+  {
+    width: $userBlockWidth*0.25;
+    height: $userBlockWidth*0.25;
+    margin: $borderSize;
+  }
+
+  button
+  {
+    width: $userBlockWidth*0.25;
+    margin-right: $borderSize;
+  }
+
+  .info
+  {
+    display: inline-block;
+    width: $userBlockWidth*0.5-5px - 2*$borderSize - 30px;
+    overflow: hidden;
+  }
+
+}
+
+.selected
+{
+  background-color: $selectedColor;
+}

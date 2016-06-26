@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>project</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/vendor/modernizr.js -->
+
+    <!-- endbuild -->
+  </head>
+  <body >
+
+    <div class="leftMenu">Main
+      <div class="leftMenuActive">Overview</div>
+    </div>
+    <div class="itemList">Items
+      <div ng-app="App" ng-controller="UserCtrl">
+      <div class="addNewItem">
+
+        <input  class="search-input" type="search" placeholder="Type name here..." ng-model="itemName" >
+        <button class="add-btn" ng-click="AddUser()" class="btn btn-success">Add new</button>
+      </div>
+      <div class="items">
+          <myitem user="u"  delete="DeleteUser"  ng-repeat="u in users track by $index" ng-click="select($event)">
+          </myitem>
+          </div>
+      </div>
+    </div>
+
+    <div class="comment">Comments #2
+
+    </div>
+
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="scripts/main.js"></script>
+
+  </body>
+</html>

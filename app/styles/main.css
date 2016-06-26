@@ -1,0 +1,120 @@
+.leftMenu {
+    width: 18%;
+    height: 600px;
+    background-color: rgb(43,47,62);
+    display: inline-block;
+    float: left;
+    color: grey;
+    font-size: 36pt;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 100;
+    line-height: 31.9px;
+}
+.leftMenuActive {
+    background-color: rgb(255,57,81);
+    color: white;
+    height: 40px;
+    font-size: 20px;
+    margin-top: 50px;
+    padding: 15px 0 0 15px;
+}
+.itemList {
+    display: inline-block;
+    width: 36%;
+    float: left;
+    border: solid 2px lightgrey;
+    margin: 20px 10px 20px 30px;
+    min-height: 400px;
+    height: auto;
+    font-size: 30px;
+    padding: 15px 0px 0px 30px;
+}
+.comment {
+    display: inline-block;
+    width: 36%;
+    float: left;
+    border: solid 2px lightgrey;
+    margin: 20px 10px 20px 5px;
+    height: 500px;
+    font-size: 30px;
+    padding: 15px 0 0 10px;
+}
+.add-btn {
+    color: white;
+    background-color: rgb(39,204,192);
+    border: none;
+    width: 130px;
+    height: 35px;
+    border-radius: 4px;
+    font-size: 17px;
+}
+.search-input {
+    width: 290px;
+    height: 35px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+
+}
+.addNewItem {
+    padding-top: 15px;
+    margin-bottom: 10px;
+}
+/**********************************************/
+.userBlock {
+    border-bottom: 1px solid lightgrey;
+    width: 98%;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.userBlock .info {
+    display: inline-block;
+    width: 70%;
+    overflow: hidden;
+    font-size: 20px;
+
+}
+.userBlock .btn-danger {
+    background-color: white;
+    border-radius: 4px;
+    border:1px solid #d43f3a;
+    width: 90px;
+    height: 35px;
+    float: right;
+    color: red;
+    font-size: 15px;
+
+}
+.itemselected {
+    border-bottom: 1px solid lightgrey;
+    width: 98%;
+    height: 40px;
+    margin-bottom: 10px;
+    border-left:3px solid deeppink;
+
+}
+.itemselected .btn-danger {
+    background-color: white;
+    border-radius: 4px;
+    border:1px solid #d43f3a;
+    width: 90px;
+    height: 35px;
+    float: right;
+    color: red;
+    font-size: 15px;
+
+}
+.active {
+    border-color: #ccc;
+    background-color: #D9D9D9;
+}
+.itemselected .info {
+    display: inline-block;
+    width: 70%;
+    overflow: hidden;
+    font-size: 20px;
+
+}
+
