@@ -1,60 +1,78 @@
 angular.module("App", [])
-    .controller("UserCtrl", function($scope)
+    .controller("ItemCtrl", function($scope)
     {
-
         // Загрузка
-        if (localStorage["users"])
+        if (localStorage["items"])
         {
-            $scope.users = JSON.parse(localStorage["users"]);
+            $scope.items = JSON.parse(localStorage["items"]);
         }
         else
         {
-            $scope.users = [];
+            $scope.items = [];
         }
+      if(localStorage["comments"])
+      {
+          $scope.comments = JSON.parse(localStorage["comments"]);
+      }
+      else {
+        $scope.comments = [];
+      }
 
-        $scope.AddUser = function()
+        $scope.AddItem = function()
         {
-            var index = $scope.users.length + 1;
+            var index = $scope.items.length;
             console.log(index);
-            $scope.users.push({id: index , name: $scope.itemName});
+            $scope.items.push({id: index , name: $scope.itemName});
             console.log($scope.itemName);
-            localStorage["users"] = JSON.stringify($scope.users);//saving
+            localStorage["items"] = JSON.stringify($scope.items);//saving
         }
+      
+      $scope.selected = 0;
 
-        $scope.getCategory = function(user) {
-            $scope.selected = user.id;
-            console.log("happy");
+      $scope.select= function(index) {
+          $scope.selected = index;
+          if (index == $scope.selected) {
+              console.log($scope.selected);
+              for ($scope.comments.id = 0; $scope.comments.id < $scope.comments.length; $scope.comments.id++) {
+                  if ($scope.comments.id == $scope.selected) {
+                      console.log($scope.comments.id+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                      $scope.comments[index] = JSON.stringify(localStorage["comments"]);//downloading comments
+                  }
+              }
+          }
+      }
+            $('.commentText').keydown(function (e) {
+                var key = e.which;
+                if(key == 13)  // the enter key code
+                {
+                    $scope.AddComment();
+                }
+            });
 
+        $scope.AddComment = function () {
+
+            var indexCom = 0;
+            $scope.comments.push({id: $scope.selected , idCom:indexCom ,text: $scope.comentText });
+            indexCom++;
+            console.log($scope.comentText,$scope.selected, indexCom);
+            localStorage["comments"] = JSON.stringify($scope.comments);//saving
+
+           }
+
+
+
+
+        $scope.onKeyPress = function ($event) {
+            $scope.AddComment();
         };
-        $scope.isActive = function(user) {
-            console.log("happy act");
-            return $scope.selected === user.id;
 
-        };
-        $scope.count = 0;
-        $scope.select = function($event) {
-            count++;//noinspection JSAnnotator
-            if(count % 2 =! 0 ) {
-            angular.element($event.target).addClass('itemselected');
-        }
-        }
 
-        $scope.DeleteUser = function(user)
+        $scope.DeleteItem = function(item)
         {
-            var index = $scope.users.indexOf(user);
-            if (index != -1) $scope.users.splice(index , 1);
-            localStorage["users"] = JSON.stringify($scope.users);//saving
+            var index = $scope.items.indexOf(item);
+            if (index != -1) $scope.items.splice(index , 1);
+            localStorage["items"] = JSON.stringify($scope.items);//saving
         }
-
-        var activeUser = null;
-
-        $scope.Select = function(user)
-        {
-            $scope.activeUser = user;
-
-        }
-
-
     })
 
     .directive("myitem", function()
@@ -62,12 +80,24 @@ angular.module("App", [])
         return {
             restrict: "E",
             scope: {
-                user: "=user",
+              item: "=item",
                 delete: "=delete"
             },
 
-            template: "<div  class=\"userBlock\" >" +
+            template:
             " <div " +
-            "class=\"info\"  >{{user.name}}</div>   <button class=\"btn btn-danger\" ng-click=\"delete(user)\">Delete</button> </div>"
+            "class=\"info\"  >{{item.name}}</div>   <button class=\"btn-danger\" ng-click=\"delete(item)\">Delete</button> "
         }
-    });
+    })
+
+.directive("mycomment",function () {
+  return {
+    restrict:"E",
+    scope: {
+      comment:"=comment"
+    },
+    template:"<div " + "class=\"userBlock\"  >{{comment.text}}</div>"
+  }
+  });
+
+
