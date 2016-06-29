@@ -8,21 +8,10 @@
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <!-- Place favicon.ico in the root directory -->
 
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css" type="text/css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <!-- endbuild -->
 
-    <!-- build:js scripts/vendor/modernizr.js -->
-
-    <!-- endbuild -->
 </head>
 <body ng-app="App" >
 
@@ -36,7 +25,8 @@
             <button class="add-btn" ng-click="AddItem()">Add new</button>
         </div>
         <div class="items">
-            <myitem item="it"  delete="DeleteItem" class="userBlock" ng-repeat="it in items track by $index" ng-click="select($index)" ng-class="{'itemselected': $index == selected}">
+            <myitem item="it"  delete="DeleteItem" class="userBlock" ng-repeat="it in items track by $index"
+                    ng-click="select($index)"  ng-class="{'itemselected': $index == selected}">
             </myitem>
         </div>
     </div>
@@ -44,12 +34,11 @@
 
 <div class="comments">Comments #2
     <div class="myComments" ng-controller="ItemCtrl">
-      <mycomment comment="com" ng-repeat="com in comments track by $index" ></mycomment>
+      <mycomment comment="com" ng-repeat="com in comments track by $index"></mycomment>
     </div>
-    <div>
-        <div>
-        </div>
-        <input type="text" class="commentText" ng-model="comentText">
+    <div class="addCom">
+        <div class="image"></div>
+        <textarea  rows="3" cols="52" class="commentText" ng-model="comentText"></textarea>
     </div>
 </div>
 

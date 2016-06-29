@@ -5,12 +5,11 @@
     display: inline-block;
     float: left;
     color: grey;
-    font-size: 36pt;
-    font-family: "Open Sans";
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 100;
-    line-height: 31.9px;
+    font-size: 45px;
+    font-family: "Arial", "Arial", sans-serif;
+    padding-top: 20px;
+    padding-left: 20px;
+
 }
 .leftMenuActive {
     background-color: rgb(255,57,81);
@@ -18,18 +17,21 @@
     height: 40px;
     font-size: 20px;
     margin-top: 50px;
-    padding: 15px 0 0 15px;
+    margin-left: -20px;
+    padding: 20px 20px 0 20px;
 }
 .itemList {
     display: inline-block;
-    width: 37%;
+    width: 35%;
     float: left;
     border: solid 2px lightgrey;
     margin: 20px 10px 20px 30px;
     min-height: 400px;
     height: auto;
-    font-size: 30px;
-
+    font-size: 45px;
+    color: grey;
+    font-family: "Arial", "Arial Narrow", sans-serif;
+    padding: 20px 0 0 20px;
 }
 .comments {
     display: inline-block;
@@ -39,8 +41,10 @@
     margin: 20px 10px 20px 5px;
     min-height: 500px;
     height:auto;
-    font-size: 30px;
-    padding: 15px 0 0 10px;
+    font-size: 45px;
+    color: grey;
+    font-family: "Arial", "Arial Narrow", sans-serif;
+    padding: 20px 0 0 20px;
 }
 .add-btn {
     color: white;
@@ -52,61 +56,113 @@
     font-size: 17px;
 }
 .search-input {
-    width: 290px;
+    width: 320px;
     height: 35px;
     border: 1px solid lightgrey;
     border-radius: 3px;
-
+    margin-left: -15px;
 }
 .addNewItem {
     padding-top: 15px;
     margin-bottom: 10px;
-  display: inline-block;
-  padding: 15px 0px 0px 10px;
+    display: inline-block;
+    padding: 15px 0px 0px 10px;
 }
-/**********************************************/
 .userBlock {
     border-bottom: 1px solid lightgrey;
     width: 100%;
-    height: 40px;
-    padding-bottom: 10px;
-  padding-top: 10px;
-  display: inline-block;
+    min-height: 40px;
+    height: auto;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    display: inline-block;
+    margin-left: -17px;
 }
  .info {
     display: inline-block;
-    width: 60%;
+    min-width:50px;
+    width:auto;
     overflow: hidden;
     font-size: 20px;
-   margin-left: 20px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: black;
+    float:left;
 }
  .btn-danger {
    display: inline-block;
     background-color: white;
     border-radius: 4px;
     border:1px solid #d43f3a;
-    width: 90px;
-    height: 35px;
+    width: 100px;
+    height: 40px;
     float: right;
     color: red;
     font-size: 15px;
 }
 .itemselected {
-      border-left:3px solid deeppink;
-      margin-left: -3px;
-
-
+      border-left:5px solid rgb(255,57,81);
+      margin-left: -22px;
 }
 .commentText {
     height: 70px;
     width: 80%;
     margin-bottom: 10px;
     float: right;
+    margin-right: 15px;
+    margin-top: 30px;
 }
 .myComments {
-    width:90%;
+    width: 100%;
     min-height: 400px;
-  height:auto;
-
+    height:auto;
+    float: right;
+    display: inline-block;
+    margin-left: 10px;
 }
+.image {
+  height: 60px;
+  width: 60px;
+  background-color: grey;
+  float: left;
+  display: inline-block;
+  margin-top: 30px;
+}
+.comment {
+  border-bottom: 1px solid lightgrey;
+  width: 100%;
+  min-height: 60px;
+  height: auto;
+  display: inline-block;
+}
+.commentBlock {
+  width: 85%;
+  min-height: 30px;
+  height: auto;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  display: inline-block;
+  float:right;
+  font-size: 15px;
+  overflow: auto;
+  color: black;
+}
+.commentImage {
+  height: 60px;
+  width: 60px;
+  background-color: grey;
+  float: left;
+  display: inline-block;
+  margin-top: 5px;
+}
+.countComments {
+  background-color: rgb(39,204,192);
+  border-radius: 40%;
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+  float:left;
+  margin-top: 5px;
+}
+
 
