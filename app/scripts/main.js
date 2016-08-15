@@ -1,95 +1,118 @@
 angular.module("App", [])
-    .controller("ItemCtrl", function($scope)
-    {
-       //DOWNLOADING
-        if (localStorage["items"])
-        {
-            $scope.items = JSON.parse(localStorage["items"]);
+    .controller("MealCtrl", function($scope) {
+        //DOWNLOADING
+        if (localStorage["meals"]) {
+            $scope.meals = JSON.parse(localStorage["meals"]);
         }
-        else
-        {
-            $scope.items = [];
+        else {
+            $scope.meals = [];
         }
 
-      if(localStorage["comments"])
-      {
-          $scope.comments = JSON.parse(localStorage["comments"]);
-      }
-        //Adding items
-        $scope.AddItem = function()
-        {
-            var index = $scope.items.length;
-            $scope.items.push({                       //pushing item data in local storage "items"
-                                  id: index ,
-                                  name: $scope.itemName
+        if (localStorage["recipes"]) {
+            $scope.recipes = JSON.parse(localStorage["recipes"]);
+        }
+        else {
+            $scope.recipes = [];
+        }
+        //Adding meals
+        $scope.AddMeal = function () {
+            var index = $scope.meals.length;
+
+            $scope.meals.push({                       //pushing meal data in local storage "meals"
+                id: index,
+                name: $scope.mealName
             });
-            localStorage["items"] = JSON.stringify($scope.items);//saving
+            
+            localStorage["meals"] = JSON.stringify($scope.meals);//saving
 
         }
-      
-      $scope.selected = 0;
 
-      $scope.select= function(index) {
-          $scope.selected = index; //selected item
 
-        $scope.idComment = $scope.comments.id;
 
-              for ($scope.idComment = 0; $scope.idComment < $scope.comments.length; $scope.idComment++) {
-                  if ($scope.idComment == $scope.selected) {
-                      $scope.comments.id = JSON.parse(localStorage["comments"]);//downloading comments
-                  }
-              }
-          }
-            $('textarea').keypress (function(event){  // if press enter in the textarea
+        $scope.select = function (index) {
 
-              var keycode = (event.keyCode ? event.keyCode : event.which);
-              if(keycode === 13){// the enter key code
-                $scope.AddComment();                    //adding comment
-                $scope.countComments = $scope.comments.length;   // variable for counting comments
-              }
-            });
-        $scope.indexCom = 0;
+            $scope.selected = index;//selected meal
 
-        $scope.AddComment = function () { // function for adding comments
 
-            $scope.comments.push({                          //pushing comments data to local storage "comments"
-                                    id: $scope.selected ,
-                                    idCom:$scope.indexCom ,
-                                    text: $scope.comentText
-            });
-            localStorage["comments"] = JSON.stringify($scope.comments);//saving
-           }
+            for ($scope.idRecipe = 0; $scope.idRecipe < $scope.recipes.length; $scope.idRecipe++) {
+               // $(".recipe").show();
 
-      
-        $scope.DeleteItem = function(item)  //function for deleting item
+                if ($scope.idRecipe == $scope.selected) {
+                        if($scope.idRecipe = 0) {
+                            for ($scope.idRecipe = $scope.selected ; $scope.idRecipe < $scope.recipes.length ; $scope.idRecipe++) {
+                                $(".recipe").hide();
+                            }
+                        }
+                    else {
+                    for ($scope.idRecipe = 0; $scope.idRecipe < $scope.selected - 1 ; $scope.idRecipe++) {
+                        $(".recipe").hide();
+                    }
+                        }
+
+                }
+                $scope.com = JSON.stringify($scope.recipes[$scope.selected].text);//downloading recipes
+
+            }
+
+
+    }
+
+        //Adding recipes
+        $scope.AddRecipe = function(){
+
+            var index = $scope.recipes.length;
+
+        $scope.recipes.push ({                          //pushing comments data to local storage "recipes"
+            idRec: index ,
+            id: $scope.selected,
+            text: $scope.recipeText,
+            
+        });
+            localStorage["recipes"] = JSON.stringify($scope.recipes);//saving
+
+    }
+
+
+
+
+        $scope.DeleteMeal = function(meal)  //function for deleting meal
         {
-            var index = $scope.items.indexOf(item);
-            if (index != -1) $scope.items.splice(index , 1);
-            localStorage["items"] = JSON.stringify($scope.items);//saving
+            var index = $scope.meals.indexOf(meal);
+            if (index != -1) $scope.meals.splice(index , 1);
+            localStorage["meals"] = JSON.stringify($scope.meals);//saving
+        }
+
+        $scope.DeleteRecipe = function(recipe)  //function for deleting recipe
+        {
+            var index = $scope.recipes.indexOf(recipe);
+            if (index != -1) $scope.recipes.splice(index , 1);
+            localStorage["recipes"] = JSON.stringify($scope.recipes);//saving
         }
 })
-    .directive("myitem", function()   // directive for outputting items
+    .directive("mymeal", function()   // directive for outputting meals
     {
         return {
             restrict: "E",
             scope: {
-              item: "=item",
-              delete: "=delete"
+                meal: "=meal",
+                delete: "=delete"
             },
 
-            template:   //contain name , count comments and delete button
-            " <div " +
-            "class=\"info\"  >{{item.name}}</div> <div class=\"countComments\">{{ comments.length }}</div>   <button class=\"btn-danger\" ng-click=\"delete(item)\">Delete</button> "
+            template:   //contain number of meal, name  and delete button
+            " <div " + "class=\"info\"  >{{meal.id + 1 + '. '}}{{meal.name}}</div>  <button class=\"btn-delete\" ng-click=\"delete(meal)\">Delete</button> "
         }
     })
 
-.directive("mycomment",function () {  //directive for outputting comments
+.directive("myrecipe",function () {  //directive for outputting recipes
   return {
     restrict:"E",
     scope: {
-      comment:"=comment"
+        recipe:"=recipe",
+        delete: "=delete"
     },
-    template:" <div class=\"comment\"> <div "+"class=\"commentImage\"></div> <div " + "class=\"commentBlock\"  >{{comment.text}} </div> </div>"
+    template: //contain number of recipe, name  and delete button
+    " <div class=\"recipe\"> <div " + "class=\"recipeBlock\"  >{{recipe.idRec + 1 + '. '}} {{ recipe.text}}" +
+    " </div><button class=\"btn-delete\" ng-click=\"delete(recipe)\">Delete</button> </div>"
     
   }
   });

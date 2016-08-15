@@ -13,33 +13,31 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 </head>
-<body ng-app="App" >
+<body ng-app="App" background="images/img.jpeg">
 
-<div class="leftMenu">Main
-    <div class="leftMenuActive">Overview</div>
-</div>
-<div class="itemList">Items
-    <div  ng-controller="ItemCtrl">
-        <div class="addNewItem">
-            <input  class="search-input" type="text" placeholder="Type name here..." ng-model="itemName" >
-            <button class="add-btn" ng-click="AddItem()">Add new</button>
+<div class="mealList">Meals
+    <div  ng-controller="MealCtrl">
+        <div class="addNewMeal">
+            <input  class="search-input" type="text" placeholder="Type name of meal here..." ng-model="mealName" >
+            <button class="add-btn" ng-click="AddMeal()">Add new</button>
         </div>
-        <div class="items">
-            <myitem item="it"  delete="DeleteItem" class="userBlock" ng-repeat="it in items track by $index"
+        <div class="meals">
+            <mymeal meal="meal"  delete="DeleteMeal" class="userBlock" ng-repeat="meal in meals track by $index"
                     ng-click="select($index)"  ng-class="{'itemselected': $index == selected}">
-            </myitem>
+            </mymeal>
         </div>
     </div>
 </div>
 
-<div class="comments">Comments #2
-    <div class="myComments" ng-controller="ItemCtrl">
-      <mycomment comment="com" ng-repeat="com in comments track by $index"></mycomment>
+<div class="recipes" ng-controller="MealCtrl">Recipes
+    <div class="addNewRecipe">
+        <input type="text" placeholder="Type recipe here..." class="recipeText" ng-model="recipeText">
+        <button class="add-btn" ng-click="AddRecipe()"> Add new</button>
     </div>
-    <div class="addCom">
-        <div class="image"></div>
-        <textarea  rows="3" cols="52" class="commentText" ng-model="comentText"></textarea>
+    <div class="myRecipes">
+      <myrecipe  recipe="rec" delete="DeleteRecipe" ng-repeat="rec in recipes track by $index"></myrecipe>
     </div>
+
 </div>
 
 <script src="/bower_components/jquery/dist/jquery.js"></script>
